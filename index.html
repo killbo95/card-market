@@ -11,6 +11,18 @@
       color: white;
     }
 
+    /* UNDER CONSTRUCTION BANNER */
+    .banner {
+      background-color: #ffc107;
+      color: #000;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
     /* NAVBAR */
     .navbar {
       background-color: #0a1a36;
@@ -125,9 +137,39 @@
     .card-grid .card {
       width: 200px;
     }
+
+    /* SEARCH BOX */
+    #searchBox {
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: none;
+      font-size: 14px;
+      margin-left: 10px;
+      outline: none;
+    }
+
+    #searchBtn {
+      background: #ff9900;
+      border: none;
+      padding: 7px 12px;
+      margin-left: 5px;
+      border-radius: 4px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+    }
+
+    #searchBtn:hover {
+      background: #e68a00;
+    }
   </style>
 </head>
 <body>
+
+  <!-- 🚧 UNDER CONSTRUCTION BANNER -->
+  <div class="banner">
+    ⚠️ This page / website is under construction. Things may not work yet.
+  </div>
 
   <!-- ✅ NAVIGATION BAR -->
   <div class="navbar">
@@ -146,6 +188,10 @@
       </div>
 
       <a href="make.html">Make/Sell</a>
+
+      <!-- Search box -->
+      <input type="text" id="searchBox" placeholder="Search cards..." />
+      <button id="searchBtn">Search</button>
     </div>
 
     <div class="navbar-right">
@@ -174,7 +220,7 @@
   </div>
 
   <!-- 📦 CARD GRID -->
-  <div class="card-grid">
+  <div class="card-grid" id="cardGrid">
     <div class="card">
       <img src="https://placehold.co/150x150" />
       <p>Pikachu - $10</p>
@@ -193,12 +239,13 @@
     </div>
   </div>
 
-  <!-- 🧠 SLIDER SCRIPT -->
+  <!-- 🧠 SCRIPTS -->
   <script>
     function goToCard(link) {
       window.location.href = link;
     }
 
+    // Slider auto-scroll
     const slider = document.getElementById("slider");
     let scrollAmount = 0;
     const scrollStep = 1;
@@ -213,8 +260,30 @@
         behavior: "smooth"
       });
     }
-
     setInterval(autoScroll, 30);
+
+    // Search functionality
+    const searchBtn = document.getElementById('searchBtn');
+    const searchBox = document.getElementById('searchBox');
+    const cardGrid = document.getElementById('cardGrid');
+
+    function searchCards() {
+      const filter = searchBox.value.toLowerCase();
+      const cards = cardGrid.getElementsByClassName('card');
+      for (let card of cards) {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(filter) ? '' : 'none';
+      }
+    }
+
+    searchBtn.addEventListener('click', searchCards);
+
+    // Also allow pressing Enter key to search
+    searchBox.addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        searchCards();
+      }
+    });
   </script>
 
 </body>
