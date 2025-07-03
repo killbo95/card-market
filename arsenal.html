@@ -56,7 +56,22 @@
     <p><strong>Type:</strong> Football</p>
     <p><strong>Price:</strong> AED 25</p>
 
-    <button class="btn add-cart" onclick="alert('Added to cart!')">Add to Cart</button>
+    <button class="btn add-cart" onclick="addToCart()">Add to Cart</button>
+
+<script>
+  function addToCart() {
+    const item = {
+      name: "Arsenal Bonus Card",
+      price: "AED 25",
+      image: "https://i.ibb.co/ksbHW3zW/20250702-122803-1.jpg"
+    };
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(item);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Arsenal Bonus Card added to cart!");
+  }
+</script>
+
     <a href="buy-form.html?card=Arsenal%20Bonus%20Card">
       <button class="btn buy-now">Buy Now</button>
     </a>
