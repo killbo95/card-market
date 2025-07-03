@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buy Card</title>
+  <style>
+    body {
+      background-color: #0b2345;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      text-align: center;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+      background: #1c3b75;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+    input[type="submit"] {
+      background-color: #ff9900;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    input[type="submit"]:hover {
+      background-color: #e68a00;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Buy Card Request</h1>
+
+  <form action="https://formsubmit.co/yehya.salam@amb.sch.ae" method="POST">
+    <input type="hidden" name="_subject" value="New Card Buy Request">
+    <input type="hidden" name="Card Name" id="cardNameField" value="">
+    
+    <label>Your Full Name:</label>
+    <input type="text" name="Full Name" required>
+    
+    <label>Email or Phone:</label>
+    <input type="text" name="Contact" required>
+    
+    <label>How many do you want?</label>
+    <input type="number" name="Quantity" min="1" required>
+    
+    <label>Extra notes (optional):</label>
+    <textarea name="Notes" rows="4"></textarea>
+
+    <input type="submit" value="Send Buy Request">
+  </form>
+
+  <script>
+    // Get card name from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const cardName = urlParams.get('card');
+    document.getElementById('cardNameField').value = cardName;
+  </script>
+
+</body>
+</html>
