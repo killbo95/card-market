@@ -41,25 +41,27 @@
 <body>
 
   <h1>Buy Card Request</h1>
+ <div class="form-container">
+    <h2>Submit Your Card for Approval</h2>
+    <form action="https://formsubmit.co/yehya.salam@amb.sch.ae" method="POST">
+      <input type="text" name="Card Name" placeholder="Card Name" required>
+      <input type="text" name="Price" placeholder="Price" required>
+      <input type="text" name="Image URL" placeholder="Image URL" required>
+      <select name="Type" required>
+        <option value="">Select Category</option>
+        <option value="Football">Football</option>
+        <option value="Pokémon">Pokémon</option>
+        <option value="Real">Real</option>
+        <option value="Fake">Fake</option>
+      </select>
+      <textarea name="Description" placeholder="Description" required></textarea>
 
-  <form action="https://formsubmit.co/yehya.salam@amb.sch.ae" method="POST">
-    <input type="hidden" name="_subject" value="New Card Buy Request">
-    <input type="hidden" name="Card Name" id="cardNameField" value="">
-    
-    <label>Your Full Name:</label>
-    <input type="text" name="Full Name" required>
-    
-    <label>Email or Phone:</label>
-    <input type="text" name="Contact" required>
-    
-    <label>How many do you want?</label>
-    <input type="number" name="Quantity" min="1" required>
-    
-    <label>Extra notes (optional):</label>
-    <textarea name="Notes" rows="4"></textarea>
+      <!-- Optional: redirect after submit -->
+      <input type="hidden" name="_next" value="thanks.html">
 
-    <input type="submit" value="Send Buy Request">
-  </form>
+      <button type="submit">Submit Card</button>
+    </form>
+  </div>
 
   <script>
     // Get card name from URL
